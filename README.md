@@ -41,3 +41,5 @@ It doesn't do this for any other buttons. What this python script does is it use
 ![image](https://user-images.githubusercontent.com/24685455/222074073-e4f31565-8cbb-48fc-94a6-52b10a348d21.png)
 
 You should now be able to bind the menu button to whatever you want.
+
+The reason this change to the binding is needed is because SteamVR forces you to have the dashboard assigned to *at least* one button. Since the menu button doesn't have a touch sensor it'll never cause the dashboard to open if setup like above.
