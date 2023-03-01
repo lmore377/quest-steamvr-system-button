@@ -7,6 +7,15 @@ Right now this just opens the dashboard with a short press.
 
 The provided exe was created using [PyInstaller](https://pyinstaller.org/en/stable/operating-mode.html). It *shoud* be fine since it's just the .py file in this repo packaged together with python itself and any required libraries but Windows Defender and other antivirus software might freak out. If you don't trust it just [manually install python](#Slightly-less-easy-setup)
 
+## How it works
+On the quest there's a service (ServiceInputManager) which handles stuff like tracking and controller inputs. For some reason whenever you press the oculus button that service makes note of it in logcat and you see a log entry like this:
+```
+03-01 00:52:52.191  1290  1783 I ServiceInputManager: system button SetHomeButtonDownState 176262
+03-01 00:52:52.391  1290  1783 I ServiceInputManager: system button SetHomeButtonUpState 176263
+```
+It doesn't do this for any other buttons. What this python script does is it uses adb to connect to the headset so it can read the logcat output then it just waits until it sees those lines of text. When it does, it sends a debug command to steamvr to toggle the dashboard (if you paste this into a web browser the dashboard will open/close `vrmonitor://debugcommands/system_dashboard_toggle`)
+
+
 # Easy Setup
 1. Install [OculusKiller](https://github.com/LibreQuest/OculusKiller) 
 2. Setup ADB on your PC. You can either do this manually or use something like SideQuest or [Meta Quest Developer Hub](https://developer.oculus.com/documentation/unity/ts-odh/). You don't need to do this if you already use one of those programs.
