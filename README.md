@@ -1,4 +1,6 @@
 # quest-system-button-steamvr
+***Does not work with any rift headsets.***
+
 Maps the Quest system button to the SteamVR dashboard. For use with [OculusKiller](https://github.com/LibreQuest/OculusKiller) 
 
 Don't use this without killer installed. You'll run into weird issues with both the steamvr and oculus dashboard trying to open at the same time.
